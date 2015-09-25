@@ -12,15 +12,18 @@ RUN arch="$(dpkg --print-architecture)" \
 
 RUN apt-key adv --keyserver ha.pool.sks-keyservers.net --recv-keys 46095ACC8548582C1A2699A9D27D666CD88E42B4
 
-ENV ELASTICSEARCH_MAJOR 2.0
-ENV ELASTICSEARCH_VERSION 2.0.0~beta2
-
+# ENV ELASTICSEARCH_MAJOR 2.0
+# ENV ELASTICSEARCH_VERSION 2.0.0~beta2
+#
 # RUN echo "deb http://packages.elasticsearch.org/elasticsearch/$ELASTICSEARCH_MAJOR/debian stable main" > /etc/apt/sources.list.d/elasticsearch.list
 #
 # RUN set -x \
 #	&& apt-get update \
 #	&& apt-get install -y --no-install-recommends elasticsearch=$ELASTICSEARCH_VERSION \
 #	&& rm -rf /var/lib/apt/lists/*
+
+ENV ELASTICSEARCH_MAJOR 2.0
+ENV ELASTICSEARCH_VERSION 2.0.0-beta2
 
 RUN curl -SOL https://download.elasticsearch.org/elasticsearch/release/org/elasticsearch/distribution/deb/elasticsearch/$ELASTICSEARCH_VERSION/elasticsearch-$ELASTICSEARCH_VERSION.deb \
 	&& dpkg -i elasticsearch-$ELASTICSEARCH_VERSION.deb \
