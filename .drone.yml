@@ -2,6 +2,7 @@
 publish:
   docker:
     file: 2.0/Dockerfile
+    context: "2.0"
     username: $$DOCKER_USER
     email: $$DOCKER_EMAIL
     password: $$DOCKER_PASSWORD
