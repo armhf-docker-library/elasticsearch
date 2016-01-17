@@ -1,0 +1,11 @@
+
+publish:
+  docker:
+    file: 2.0
+    username: $$DOCKER_USER
+    email: $$DOCKER_EMAIL
+    password: $$DOCKER_PASSWORD
+    repo: armhfbuild/elasticsearch
+    tag: latest
+    force_tag: true
+    storage_driver: overlay
