@@ -1,4 +1,5 @@
 publish:
+
   docker:
     file: "2.0/Dockerfile"
     context: "2.0"
@@ -6,6 +7,21 @@ publish:
     email: $$DOCKER_EMAIL
     password: $$DOCKER_PASSWORD
     repo: armhfbuild/elasticsearch
-    tag: latest
+    tag: 2.0
+    force_tag: true
+    storage_driver: overlay
+
+  docker:
+    file: "2.1.1/Dockerfile"
+    context: "2.1.1"
+    username: $$DOCKER_USER
+    email: $$DOCKER_EMAIL
+    password: $$DOCKER_PASSWORD
+    repo: armhfbuild/elasticsearch
+    tag:
+      - latest
+      - "2.1.1"
+      - "2.1"
+      - "2"
     force_tag: true
     storage_driver: overlay
