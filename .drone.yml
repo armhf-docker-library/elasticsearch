@@ -1,16 +1,47 @@
 matrix:
   VERSION:
-    - "2.0.2"
-    - "2.1.1"
+    # - "2.0.2"
+    # - "2.1.1"
+    - "2.1.2"
+    - "2.2.0"
 
 publish:
-  docker:
+  hub_2_1_2:
+    image: armhfplugins/drone-docker
     file: "$$VERSION/Dockerfile"
     context: "$$VERSION"
     username: $$DOCKER_USER
     email: $$DOCKER_EMAIL
     password: $$DOCKER_PASSWORD
     repo: armhfbuild/elasticsearch
-    tag: "$$VERSION"
     force_tag: true
     storage_driver: overlay
+    tag:
+      - "2.1.2"
+      - "2.1"
+    when:
+      matrix:
+          VERSION: "2.1.2"
+
+  hub_2_2_0:
+    image: armhfplugins/drone-docker
+    file: "$$VERSION/Dockerfile"
+    context: "$$VERSION"
+    username: $$DOCKER_USER
+    email: $$DOCKER_EMAIL
+    password: $$DOCKER_PASSWORD
+    repo: armhfbuild/elasticsearch
+    force_tag: true
+    storage_driver: overlay
+    tag:
+      - "2.2.0"
+      - "2.2"
+      - "latest"
+    when:
+      matrix:
+          VERSION: "2.2.0"
+
+notify:
+  slack:
+    webhook_url: $$SLACK_WEBHOOK_URL
+    channel: armhf
